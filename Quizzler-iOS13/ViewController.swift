@@ -33,6 +33,11 @@ class ViewController: UIViewController {
         progressBar.layer.cornerRadius = 8
         progressBar.clipsToBounds = true
         
+        //Change the view of the button from a rectangle to a view with more rounded corners (Makes the red and green colors match the shape of the buttons).
+        
+        trueButton.layer.cornerRadius = 0.3 * trueButton.bounds.size.height
+        falseButton.layer.cornerRadius = 0.3 * falseButton.bounds.size.height
+        
         updateUI()
     }
     
@@ -44,25 +49,41 @@ class ViewController: UIViewController {
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
-            print("Correct!")
+            sender.backgroundColor = UIColor.green
         } else {
-            print("Failure")
+            sender.backgroundColor = UIColor.red
         }
         
         //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
         
         if questionNumber != quiz.count - 1 {
-            questionNumber += 1
-            updateUI()
+            questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
         } else {
-            questionNumber = 0
-            updateUI()
+            questionNumber = 0 //Reset the questionNumber, therefore starting back at the first question of the quiz.
         }
+        
+        updateUI()
         
     }
     
     func updateUI(){
         questionLabel.text = quiz[questionNumber].text //Access the text property of the (Question) object stored at quiz[questionNumber].
+        progressBar.progress = percentageProgress()
+        startTimer()
+    }
+    
+    func startTimer()  {
+        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: false)
+    }
+    
+    @objc func updateTimer() {
+        trueButton.backgroundColor = UIColor.clear
+        falseButton.backgroundColor = UIColor.clear
+    }
+    
+    func percentageProgress() -> Float {
+        let result = Float(questionNumber + 1) / Float(quiz.count) //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
+        return result
     }
     
 }
