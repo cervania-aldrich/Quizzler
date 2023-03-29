@@ -30,8 +30,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Set the rounded edge for the outer bar.
         progressBar.layer.cornerRadius = 8
         progressBar.clipsToBounds = true
+        
+        //Set the rounded edge for the inner bar.
+        progressBar.layer.sublayers![1].cornerRadius = 8
+        progressBar.subviews[1].clipsToBounds = true
         
         //Change the view of the button from a rectangle to a view with more rounded corners (Makes the red and green colors match the shape of the buttons).
         
@@ -69,16 +74,15 @@ class ViewController: UIViewController {
     func updateUI(){
         questionLabel.text = quiz[questionNumber].text //Access the text property of the (Question) object stored at quiz[questionNumber].
         progressBar.progress = percentageProgress()
-        startTimer()
-    }
-    
-    func startTimer()  {
-        Timer.scheduledTimer(timeInterval: 0.4, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: false)
-    }
-    
-    @objc func updateTimer() {
-        trueButton.backgroundColor = UIColor.clear
-        falseButton.backgroundColor = UIColor.clear
+        
+        //Replace timer() with UIView.animate(). Pros: No need for @objc, and smoother animation.
+        //Note that UIView.animate() disables button interactions temporarily, a good option for quiz apps but not for the Xylophone app.
+        
+        UIView.animate(withDuration: 0.8, animations: {
+          self.trueButton.backgroundColor = UIColor.clear
+          self.falseButton.backgroundColor = UIColor.clear
+        })
+        
     }
     
     func percentageProgress() -> Float {
