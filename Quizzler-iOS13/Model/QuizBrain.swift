@@ -1,18 +1,9 @@
 struct QuizBrain {
     
     let quiz = [
-        MultiQuestion(title: "Distress",
-                      question: "A 21-year old woman complains of urinary frequency, nocturia, consipation and polydipsia. Her symptoms started 2 weeks ago and prior to this she would urinate twice a day and never at night. She has also noticed general malaise and some pain in her left flank. A urine dipstick is normal. The most appropriate investigation is:",
-                      answers: ["Serum phosphate", "Serum calcium", "Parathyroid hormone (PTH)", "Plasma glucose", "Serum potassium"],
-                      correctAnswer: "Serum calcium"),
-        MultiQuestion(title: "Breathlessness",
-                      question: "A 58 year-old man presents with breathlessness, he reports feeling unwell over the last three months with nausea, vomiting and difficulty breathing. You notice his ankles are swollen and he has bruises on his arms. The patient mentions he has not been urinating as often as normal. The most appropriate investigation is:",
-                      answers: ["Urine microscopy", "Renal ultrasound", "Serum electrolytes, urea and creatinine", "Renal biospy", "Chest x-ray"],
-                      correctAnswer: "Serum electrolytes, urea and creatinine"),
-        MultiQuestion(title: "Abdominal Pain",
-                      question: "A 24-year old man presents with a four-month history of abdominal pain which has been getting worse. The patient describes the pain as generalized, dull in character and does not radiate but often occurs alongside loin pain. An irregular mass is palpable in both flanks and a mid-systolic click can be auscultated. The most appropriate investigation is:",
-                      answers: ["Increase oral hypoglycaemic dosage", "Angiotensin II receptor agonist (or blocker)", "Start cholesterol lowering therapy", "Start ACE inhibitors", "Start renal dialysis"],
-                      correctAnswer: "Start ACE inhibitors")
+        MultiQuestion(Constants.Q1.title, Constants.Q1.question, Constants.Q1.answers, Constants.Q1.correctAnswer),
+        MultiQuestion(Constants.Q2.title, Constants.Q2.question, Constants.Q2.answers, Constants.Q2.correctAnswer),
+        MultiQuestion(Constants.Q3.title, Constants.Q3.question, Constants.Q3.answers, Constants.Q3.correctAnswer)
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
