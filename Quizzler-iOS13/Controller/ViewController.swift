@@ -6,6 +6,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain()
     
@@ -25,9 +26,7 @@ class ViewController: UIViewController {
         falseButton.layer.cornerRadius = 0.3 * falseButton.bounds.size.height
         
         //Start quiz with the first question
-        questionLabel.text = quizBrain.firstQuestion()
-        progressBar.progress = quizBrain.percentageProgress()
- 
+        updateUI()
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -37,13 +36,15 @@ class ViewController: UIViewController {
         let isAnswerCorrect = quizBrain.checkAnswer(userAnswer)
         sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set the background to red. (Ternany Operator)
         
+        quizBrain.nextQuestion()
         updateUI()
         
     }
     
     func updateUI(){
-        questionLabel.text = quizBrain.nextQuestion()
-        progressBar.progress = quizBrain.percentageProgress()
+        questionLabel.text = quizBrain.getQuestionText()
+        progressBar.progress = quizBrain.getPercentageProgress()
+        scoreLabel.text = quizBrain.getScore()
 
         //Replace timer() with UIView.animate(). Pros: No need for @objc, and smoother animation.
         //Note that UIView.animate() disables button interactions temporarily, a good option for quiz apps but not for the Xylophone app.

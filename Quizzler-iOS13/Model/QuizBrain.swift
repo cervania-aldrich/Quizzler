@@ -1,6 +1,3 @@
-import Foundation
-import UIKit
-
 struct QuizBrain {
     
     //quiz is now an array of Question objects, instead of stored as a 2D array.
@@ -22,12 +19,14 @@ struct QuizBrain {
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
+    var score = 0 //A reference to track the score
     
-    func checkAnswer(_ userAnswer:String) -> Bool {
+    mutating func checkAnswer(_ userAnswer:String) -> Bool {
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
             //User got it right - Change background to green
+            score += 1
             return true
         } else {
             //User got it wrong - Change background to red
@@ -35,32 +34,31 @@ struct QuizBrain {
         }
     }
     
-    func firstQuestion() -> String {
+    mutating func nextQuestion() {
+        
+        //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
+        
+        if questionNumber + 1 < quiz.count {
+            questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+        } else {
+            questionNumber = 0 //Reset the questionNumber, therefore starting back at the first question of the quiz.
+            score = 0
+        }
+    }
+    
+    mutating func getQuestionText() -> String {
         let questionText = quiz[questionNumber].text
         return questionText
     }
     
-    mutating func nextQuestionNumber() -> Int {
-        
-        //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
-        
-        if questionNumber != quiz.count - 1 {
-            questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
-        } else {
-            questionNumber = 0 //Reset the questionNumber, therefore starting back at the first question of the quiz.
-        }
-        return questionNumber
-    }
-    
-    mutating func nextQuestion() -> String {
-        
-        let questionText = quiz[nextQuestionNumber()].text
-        return questionText
-    }
-    
-    func percentageProgress() -> Float {
+    func getPercentageProgress() -> Float {
         let result = Float(questionNumber + 1) / Float(quiz.count) //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
         return result
+    }
+    
+    func getScore() -> String {
+        let scoreString = "Score: \(score) / \(quiz.count)"
+        return scoreString
     }
     
     
