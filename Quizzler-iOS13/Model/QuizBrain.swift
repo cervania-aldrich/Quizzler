@@ -1,9 +1,11 @@
 struct QuizBrain {
     
     let quiz = [
-        MultiQuestion(Constants.Q1.title, Constants.Q1.question, Constants.Q1.answers, Constants.Q1.correctAnswer),
-        MultiQuestion(Constants.Q2.title, Constants.Q2.question, Constants.Q2.answers, Constants.Q2.correctAnswer),
-        MultiQuestion(Constants.Q3.title, Constants.Q3.question, Constants.Q3.answers, Constants.Q3.correctAnswer)
+        Question(Constants.Q1.title, Constants.Q1.question, Constants.Q1.answers, Constants.Q1.correctAnswer),
+        Question(Constants.Q2.title, Constants.Q2.question, Constants.Q2.answers, Constants.Q2.correctAnswer),
+        Question(Constants.Q3.title, Constants.Q3.question, Constants.Q3.answers, Constants.Q3.correctAnswer),
+        Question(Constants.Q4.title, Constants.Q4.question, Constants.Q4.answers, Constants.Q4.correctAnswer),
+        Question(Constants.Q5.title, Constants.Q5.question, Constants.Q5.answers, Constants.Q5.correctAnswer)
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.

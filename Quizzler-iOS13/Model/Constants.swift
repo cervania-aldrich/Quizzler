@@ -23,6 +23,21 @@ struct Constants {
         static let correctAnswer = "Start ACE inhibitors"
     }
     
+    struct Q4 {
+        static let title = "Abdominal Pain"
+        static let question = "A 24-year old man presents with a four-month history of abdominal pain which has been getting worse. The patient describes the pain as generalized, dull in character and does not radiate but often occurs alongside loin pain. An irregular mass is palpable in both flanks and a mid-systolic click can be auscultated. The most appropriate investigation is:"
+        static let answers = ["MRI scan","Abdominal US scan","Excretion urography", "CT scan","Abdominal x-ray"]
+        static let correctAnswer = "Abdominal US scan"
+        
+    }
+    
+    struct Q5 {
+        static let title = "Weight-loss"
+        static let question = "A 52-year old man complains of a 3-week history of malaise and shortness of breath. He has lost weight in the last few months but attributes this to a loss of appetite possibly due to stress at work. On examination, he has a palpable mass in the right lumbar region. He has no urinary symptoms. However, the urine dipstick detected blood. The most likely diagnosis is:"
+        static let answers = ["Renal abscess", "Renal cyst", "Renal carcinoma", "Adrenal tumour", "Pyelonephritis"]
+        static let correctAnswer = "Renal carcinoma"
+    }
+    
     
     
 }
