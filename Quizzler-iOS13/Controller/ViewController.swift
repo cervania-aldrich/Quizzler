@@ -3,30 +3,24 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var trueButton: UIButton!
+    @IBOutlet weak var optionEButton: UIButton!
     @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var optionFButton: UIButton!
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var optionAButton: UIButton!
+    @IBOutlet weak var optionBButton: UIButton!
+    @IBOutlet weak var optionCButton: UIButton!
+    @IBOutlet weak var optionDButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var quizBrain = QuizBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Set the rounded edge for the outer bar.
-        progressBar.layer.cornerRadius = 8
-        progressBar.clipsToBounds = true
+        setupUIProperties() //Set up UI properties to ensure UI looks good (Meets my requirements)
         
-        //Set the rounded edge for the inner bar.
-        progressBar.layer.sublayers![1].cornerRadius = 8
-        progressBar.subviews[1].clipsToBounds = true
-        
-        //Change the view of the button from a rectangle to a view with more rounded corners (Makes the red and green colors match the shape of the buttons).
-        trueButton.layer.cornerRadius = 0.3 * trueButton.bounds.size.height
-        falseButton.layer.cornerRadius = 0.3 * falseButton.bounds.size.height
-        
-        //Start quiz with the first question
-        updateUI()
+        updateUI() //Start quiz with the first question
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -45,15 +39,87 @@ class ViewController: UIViewController {
         questionLabel.text = quizBrain.getQuestionText()
         progressBar.progress = quizBrain.getPercentageProgress()
         scoreLabel.text = quizBrain.getScore()
+        titleLabel.text = quizBrain.getTitle()
+        
+        //Set the titles of each buttons, so that all 6 multiple choice options are in the UI.
+        optionAButton.setTitle(quizBrain.getOptionA(), for: .normal)
+        optionBButton.setTitle(quizBrain.getOptionB(), for: .normal)
+        optionCButton.setTitle(quizBrain.getOptionC(), for: .normal)
+        optionDButton.setTitle(quizBrain.getOptionD(), for: .normal)
+        optionEButton.setTitle(quizBrain.getOptionE(), for: .normal)
+        optionFButton.setTitle(quizBrain.getOptionF(), for: .normal)
 
         //Replace timer() with UIView.animate(). Pros: No need for @objc, and smoother animation.
         //Note that UIView.animate() disables button interactions temporarily, a good option for quiz apps but not for the Xylophone app.
 
-        UIView.animate(withDuration: 0.4, animations: {
-          self.trueButton.backgroundColor = UIColor.clear
-          self.falseButton.backgroundColor = UIColor.clear
+        UIView.animate(withDuration: 0.5, animations: {
+            self.optionAButton.backgroundColor = UIColor.clear
+            self.optionBButton.backgroundColor = UIColor.clear
+            self.optionCButton.backgroundColor = UIColor.clear
+            self.optionDButton.backgroundColor = UIColor.clear
+            self.optionEButton.backgroundColor = UIColor.clear
+            self.optionFButton.backgroundColor = UIColor.clear
+    
         })
 
+    }
+    
+    func setupUIProperties(){
+        
+        //Set the rounded edge for the outer bar.
+        progressBar.layer.cornerRadius = 8
+        progressBar.clipsToBounds = true
+        
+        //Set the rounded edge for the inner bar.
+        progressBar.layer.sublayers![1].cornerRadius = 8
+        progressBar.subviews[1].clipsToBounds = true
+        
+        //Change the view of the button from a rectangle to a view with more rounded corners (Makes the red and green colors match the shape of the buttons).
+        optionAButton.layer.cornerRadius = 0.3 * optionAButton.bounds.size.height
+        optionBButton.layer.cornerRadius = 0.3 * optionBButton.bounds.size.height
+        optionCButton.layer.cornerRadius = 0.3 * optionCButton.bounds.size.height
+        optionDButton.layer.cornerRadius = 0.3 * optionDButton.bounds.size.height
+        optionEButton.layer.cornerRadius = 0.3 * optionEButton.bounds.size.height
+        optionFButton.layer.cornerRadius = 0.3 * optionFButton.bounds.size.height
+        
+        //Set option A Button properties
+        optionAButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionAButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionAButton.titleLabel?.numberOfLines = 3
+        optionAButton.titleLabel?.minimumScaleFactor = 0.1
+        optionAButton.clipsToBounds = true
+        
+        //Set option B Button properties
+        optionBButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionBButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionBButton.titleLabel?.numberOfLines = 3
+        optionBButton.titleLabel?.minimumScaleFactor = 0.1
+        optionBButton.clipsToBounds = true
+        
+        //Set option C Button properties
+        optionCButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionCButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionCButton.titleLabel?.numberOfLines = 3
+        optionCButton.titleLabel?.minimumScaleFactor = 0.1
+        optionCButton.clipsToBounds = true
+        
+        //Set option D Button properties
+        optionDButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionDButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionDButton.titleLabel?.numberOfLines = 3
+        optionDButton.titleLabel?.minimumScaleFactor = 0.1
+        optionDButton.clipsToBounds = true
+        
+        //Set option E Button properties
+        optionEButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionEButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        optionEButton.titleLabel?.numberOfLines = 3
+        optionEButton.titleLabel?.minimumScaleFactor = 0.1
+        optionEButton.clipsToBounds = true
+        
+        //Set option F Button properties
+        optionFButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        
     }
     
 }
