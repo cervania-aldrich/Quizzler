@@ -1,11 +1,11 @@
 struct QuizBrain {
     
     let quiz = [
-        Question(Constants.Q1.title, Constants.Q1.question, Constants.Q1.answers, Constants.Q1.correctAnswer),
-        Question(Constants.Q2.title, Constants.Q2.question, Constants.Q2.answers, Constants.Q2.correctAnswer),
-        Question(Constants.Q3.title, Constants.Q3.question, Constants.Q3.answers, Constants.Q3.correctAnswer),
-        Question(Constants.Q4.title, Constants.Q4.question, Constants.Q4.answers, Constants.Q4.correctAnswer),
-        Question(Constants.Q5.title, Constants.Q5.question, Constants.Q5.answers, Constants.Q5.correctAnswer)
+        Question(Constants.Renal.topic, Constants.Renal.Q1.title, Constants.Renal.Q1.question, Constants.Renal.Q1.answers, Constants.Renal.Q1.correctAnswer),
+        Question(Constants.Renal.topic, Constants.Renal.Q2.title, Constants.Renal.Q2.question, Constants.Renal.Q2.answers, Constants.Renal.Q2.correctAnswer),
+        Question(Constants.Renal.topic, Constants.Renal.Q3.title, Constants.Renal.Q3.question, Constants.Renal.Q3.answers, Constants.Renal.Q3.correctAnswer),
+        Question(Constants.Renal.topic, Constants.Renal.Q4.title, Constants.Renal.Q4.question, Constants.Renal.Q4.answers, Constants.Renal.Q4.correctAnswer),
+        Question(Constants.Renal.topic, Constants.Renal.Q5.title, Constants.Renal.Q5.question, Constants.Renal.Q5.answers, Constants.Renal.Q5.correctAnswer)
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
@@ -84,6 +84,11 @@ struct QuizBrain {
     func getOptionF() -> String {
         let optionString = "Pass"
         return optionString
+    }
+    
+    func getTopic() -> String {
+        let topicString = Constants.Renal.topic
+        return topicString
     }
     
 }

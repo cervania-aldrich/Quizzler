@@ -12,11 +12,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var optionCButton: UIButton!
     @IBOutlet weak var optionDButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var topicLabel: UILabel!
     
     var quizBrain = QuizBrain()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Tap topicLabel to display UIAlertController
         
         setupUIProperties() //Set up UI properties to ensure UI looks good (Meets my requirements)
         
@@ -40,6 +43,7 @@ class ViewController: UIViewController {
         progressBar.progress = quizBrain.getPercentageProgress()
         scoreLabel.text = quizBrain.getScore()
         titleLabel.text = quizBrain.getTitle()
+        topicLabel.text = quizBrain.getTopic()
         
         //Set the titles of each buttons, so that all 6 multiple choice options are in the UI.
         optionAButton.setTitle(quizBrain.getOptionA(), for: .normal)
