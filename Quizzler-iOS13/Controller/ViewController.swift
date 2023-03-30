@@ -38,6 +38,30 @@ class ViewController: UIViewController {
         
     }
     
+    @IBAction func topicButtonPressed(_ sender: UIButton) {
+        
+        // create the alert
+        let alert = UIAlertController(title: "Select topic", message: "What questions do you want to review?", preferredStyle: UIAlertController.Style.alert)
+        
+        // add the actions (buttons)
+        alert.addAction(UIAlertAction(title: "Renal", style: UIAlertAction.Style.default, handler: { action in
+            self.topicButton.setTitle("Renal", for: .normal)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cardiovascular", style: UIAlertAction.Style.default, handler: { action in
+            self.topicButton.setTitle("Cardiovascular", for: .normal)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Respiratory", style: UIAlertAction.Style.default, handler: { action in
+            self.topicButton.setTitle("Respiratory", for: .normal)
+        }))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+        
+    }
+    
+    
     func updateUI(){
         questionLabel.text = quizBrain.getQuestionText()
         progressBar.progress = quizBrain.getPercentageProgress()

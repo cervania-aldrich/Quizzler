@@ -41,6 +41,9 @@
                                                 <state key="normal" title="Topic">
                                                     <color key="titleColor" systemColor="systemBlueColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="topicButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dUk-Jx-9Ao"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="POH-rA-QBt" userLabel="Score Label">
                                                 <rect key="frame" x="268" y="0.0" width="120" height="67.333333333333329"/>
