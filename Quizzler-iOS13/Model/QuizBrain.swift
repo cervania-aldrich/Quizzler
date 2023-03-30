@@ -23,25 +23,27 @@ struct QuizBrain {
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
     
-    func checkAnswer(_ userAnswer:String) -> UIColor {
+    func checkAnswer(_ userAnswer:String) -> Bool {
         let actualAnswer = quiz[questionNumber].answer
         
         if userAnswer == actualAnswer {
             //User got it right - Change background to green
-            return UIColor.green
-        } else if userAnswer == "" {
-            //If the button had no title, change background to clear
-            print("No answer to check")
-            return UIColor.clear
+            return true
         } else {
             //User got it wrong - Change background to red
-            return UIColor.red
+            return false
         }
-        
-        
     }
     
-    mutating func nextQuestion() -> Int {
+    func firstQuestion() -> String {
+        let questionText = quiz[questionNumber].text
+        return questionText
+    }
+    
+    mutating func nextQuestionNumber() -> Int {
+        
+        //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
+        
         if questionNumber != quiz.count - 1 {
             questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
         } else {
@@ -50,9 +52,16 @@ struct QuizBrain {
         return questionNumber
     }
     
+    mutating func nextQuestion() -> String {
+        
+        let questionText = quiz[nextQuestionNumber()].text
+        return questionText
+    }
+    
     func percentageProgress() -> Float {
         let result = Float(questionNumber + 1) / Float(quiz.count) //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
         return result
     }
+    
     
 }
