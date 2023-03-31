@@ -32,6 +32,8 @@ class ViewController: UIViewController {
         let isAnswerCorrect = quizBrain.checkAnswer(userAnswer)
         sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set to red. (Ternany Operator)
         
+        print(userAnswer)
+        print(isAnswerCorrect)
         quizBrain.nextQuestion()
         updateUI()
         
@@ -40,7 +42,7 @@ class ViewController: UIViewController {
     @IBAction func topicButtonPressed(_ sender: UIButton) {
         
         // create the alert
-        let alert = UIAlertController(title: "Select topic", message: "What type of questions do you want to review?", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: UIAlertController.Style.alert)
         
         // add the actions (buttons)
         alert.addAction(UIAlertAction(title: Constants.renalString, style: UIAlertAction.Style.default, handler: { action in
@@ -49,8 +51,8 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.updateUI()
             }
-            self.quizBrain.questionNumber = 0
-            self.quizBrain.score = 0
+            self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz again
+            
             
         }))
         
@@ -60,8 +62,8 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.updateUI()
             }
-            self.quizBrain.questionNumber = 0
-            self.quizBrain.score = 0
+            self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz again
+            
         }))
         
         // show the alert

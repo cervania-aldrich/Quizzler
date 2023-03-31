@@ -55,16 +55,16 @@ struct QuizBrain {
             questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
         } else {
             resetQuestionNumberAndScore()
-            print("Quiz done! Final Score: \(score)/\(quiz.count) .  Try again?")
+            //print("Quiz done! Final Score: \(score)/\(quiz.count) .  Try again?")
         }
     }
     
     func getQuestionText() -> String {
         var questionText = quiz[questionNumber].question
         
-        if topic == "Renal" {
+        if topic == Constants.renalString {
             questionText = renalQuiz[questionNumber].question
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             questionText = rhuematologyQuiz[questionNumber].question
         } else {
             questionText = quiz[questionNumber].question
@@ -86,9 +86,9 @@ struct QuizBrain {
     func getTitle() -> String{
         var titleString = quiz[questionNumber].title
         
-        if topic == "Renal" {
+        if topic == Constants.renalString {
             titleString = renalQuiz[questionNumber].title
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             titleString = rhuematologyQuiz[questionNumber].title
         } else {
             titleString = quiz[questionNumber].title
@@ -100,9 +100,9 @@ struct QuizBrain {
     func getOptionA() -> String {
         var optionString = quiz[questionNumber].answers[0]
         
-        if topic == "Renal"{
+        if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[0]
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[0]
         } else {
             optionString = quiz[questionNumber].answers[0]
@@ -114,9 +114,9 @@ struct QuizBrain {
     func getOptionB() -> String {
         var optionString = quiz[questionNumber].answers[1]
         
-        if topic == "Renal"{
+        if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[1]
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[1]
         } else {
             optionString = quiz[questionNumber].answers[1]
@@ -128,9 +128,9 @@ struct QuizBrain {
     func getOptionC() -> String {
         var optionString = quiz[questionNumber].answers[2]
         
-        if topic == "Renal"{
+        if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[2]
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[2]
         } else {
             optionString = quiz[questionNumber].answers[2]
@@ -142,9 +142,9 @@ struct QuizBrain {
     func getOptionD() -> String {
         var optionString = quiz[questionNumber].answers[3]
         
-        if topic == "Renal"{
+        if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[3]
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[3]
         } else {
             optionString = quiz[questionNumber].answers[3]
@@ -156,9 +156,9 @@ struct QuizBrain {
     func getOptionE() -> String {
         var optionString = quiz[questionNumber].answers[4]
         
-        if topic == "Renal"{
+        if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[4]
-        } else if topic == "Rhuematology" {
+        } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[4]
         } else {
             optionString = quiz[questionNumber].answers[4]
@@ -175,12 +175,12 @@ struct QuizBrain {
     func getTopic() -> String {
         var topicString = ""
         
-        if topic == "Renal" {
-            topicString = "Renal"
-        } else if topic == "Rhuematology" {
-            topicString = "Rhuematology"
+        if topic == Constants.renalString {
+            topicString = Constants.renalString
+        } else if topic == Constants.rhuematologyString {
+            topicString = Constants.rhuematologyString
         } else {
-            topicString = "Rhuematology"
+            topicString = Constants.rhuematologyString //Default quiz is the rhuematologyQuiz
         }
         return topicString
     }
