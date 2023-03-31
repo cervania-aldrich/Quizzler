@@ -1,7 +1,7 @@
 ///A struct to show all of the strings used in the app. Mainly, this is why all the quiz strings are stored. This is done for clarity, and reduces the risks of bugs from typos, also it makes the quizBrian more readable and everything looks more organised.
 struct Constants {
     
-    ///Commonly used strings across the development of the app.
+    ///Commonly used strings across the development of the app. Use these strings instead of typing the string manually every time.
     static let optionButtonFont = "Avenir Next"
     static let renalString = "Renal"
     static let rhuematologyString = "Rhuematology"
@@ -212,6 +212,65 @@ struct Constants {
         }
     }
     
-    
-    
+    //////A struct to show containing the default questions and answer strings. This is actually the same as the Rhuematology struct, and really it could have been anything. This is the quiz the user sees on screen first.
+    struct Default {
+            
+        struct Q1 {
+            static let title = "Stiff hands (1)"
+            static let question = "A 36-year-old woman presents to the rheumatology outpatient clinic with a two-month history of stiff hands and wrists. She mentions that the pain is particularly bad for the first few hours after waking up and is affecting her work as a dentist. On examination, the wrists, metacarpophalangeal joints and proximal interphalangeal joints are swollen and warm. What is the most likely diagnosis?"
+            static let answers = ["Rheumatoid arthritis",
+                                  "Osteoarthritis",
+                                  "Septic arthritis",
+                                  "Polymyalgia rheumatica",
+                                  "Reactive arthritis"
+            ]
+            static let correctAnswer = "Rheumatoid arthritis"
+        }
+        struct Q2 {
+            static let title = "Stiff hands (2)"
+            static let question = "A 45-vear-old woman presents to the rheumatology outpatient clinic with a three-month history of stiff hands and wrists. She mentions that the pain is particularly bad first thing in the morning. On examination, the wrists, metacarpophalangeal joints and proximal interphalyngeal joints are swollen and warm. A diagnosis of rheumatoid arthritis is suspected. Which of the following investigations is most specific for confirming the diagnosis?"
+            static let answers = ["X-ray",
+                                  "Rheumatoid factor levels",
+                                  "Anti-citrullinated peptide antibody (anti-CCP) levels",
+                                  "C-reactive protein",
+                                  "Erythrocyte sedimentation rate"
+            ]
+            static let correctAnswer = "Anti-citrullinated peptide antibody (anti-CCP) levels"
+        }
+        struct Q3 {
+            static let title = "Stiff hands (3)"
+            static let question = "A 40-year-old woman presents to the rheumatology outpatient clinic with a three month history of stiff hands and wrists. She mentions that the pain is particularly had first thing in the morning. On examination, the wrists, metacarpophalangeal Joints and proximal interphalangeal joints are swollen and warm. A diagnosis of rheumatoid arthritis is suspected, Blood tests for rheumatoid factor return as positive. What is the most appropriate management?"
+            static let answers = ["Non-steroidal anti-inflammatory drugs (NSAIDs)",
+                                  "Intramuscular depot injection of methylprednisolone plus NSAIDS",
+                                  "Anti-TNF therapy",
+                                  "Intramuscular depot injection of methylprednisolone plus NSAIDs and methotrexate and sulfasalazine",
+                                  "Physiotherapy"
+            ]
+            static let correctAnswer = "Non-steroidal anti-inflammatory drugs (NSAIDs)"
+        }
+        struct Q4 {
+            static let title = "Stiff hands (4)"
+            static let question = "A 50-year old woman, who has received a recent diagnosis of rheumatoid arthritis, presents to her GP with ongoing pain and stiffness in her hands and feet. Which joints are usually spared at onset of rheumatoid arthritis?"
+            static let answers = ["Proximal interphalangeal joints",
+                                  "Distal interphalangeal joints",
+                                  "Metacarpophalangeal joints",
+                                  "Wrists",
+                                  "Metatarsophalangeal joints"
+            ]
+            static let correctAnswer = "Distal interphalangeal joints"
+        }
+
+        struct Q5 {
+            static let title = "Painful knees (1)"
+            static let question = "A 75-year-old woman presents to accident and emergency complaining of pain in her knees. She mentions that this has been troubling her for several months. Pain is generally worse in the evenings and after walking. On examination, there are palpable bony swellings on the distal interphalangeal joints of the fingers on both hands. In addition, there is reduced range of movement and crepitus in the knees. What is the most likely diagnosis?"
+            static let answers = ["﻿Rheumatoid arthritis",
+                                  "Osteoarthritis",
+                                  "Reactive arthritis",
+                                  "﻿Polymyalgia rheumatica",
+                                  "Gout"
+            ]
+            static let correctAnswer = "Osteoarthritis"
+        }
+    }
+
 }

@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         
     }
     
-    ///A function that defined how the app should behave when a user decides to change the topic of the quiz. I.e, display an alert with the different quiz categories, and present that quiz in the UI.
+    ///A function that defined how the app should behave when a user decides to change the topic of the quiz. I.e, display an alert showing the different quizzes, and present one of those quizzes  in the UI.
     @IBAction func topicButtonPressed(_ sender: UIButton) {
         
         let alert = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: UIAlertController.Style.alert)  //Create an alert

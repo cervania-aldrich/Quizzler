@@ -33,11 +33,11 @@ struct QuizBrain {
     
     ///A constant to reference an array of the default quiz. The default quiz is set to be the same as the Rhuematology quiz. This is the first quiz that the users see.
     let quiz = [
-        Question(Constants.Rhuematology.Q1.title, Constants.Rhuematology.Q1.question, Constants.Rhuematology.Q1.answers, Constants.Rhuematology.Q1.correctAnswer),
-        Question(Constants.Rhuematology.Q2.title, Constants.Rhuematology.Q2.question, Constants.Rhuematology.Q2.answers, Constants.Rhuematology.Q2.correctAnswer),
-        Question(Constants.Rhuematology.Q3.title, Constants.Rhuematology.Q3.question, Constants.Rhuematology.Q3.answers, Constants.Rhuematology.Q3.correctAnswer),
-        Question(Constants.Rhuematology.Q4.title, Constants.Rhuematology.Q4.question, Constants.Rhuematology.Q4.answers, Constants.Rhuematology.Q4.correctAnswer),
-        Question(Constants.Rhuematology.Q5.title, Constants.Rhuematology.Q5.question, Constants.Rhuematology.Q5.answers, Constants.Rhuematology.Q5.correctAnswer)
+        Question(Constants.Default.Q1.title, Constants.Default.Q1.question, Constants.Default.Q1.answers, Constants.Default.Q1.correctAnswer),
+        Question(Constants.Default.Q2.title, Constants.Default.Q2.question, Constants.Default.Q2.answers, Constants.Default.Q2.correctAnswer),
+        Question(Constants.Default.Q3.title, Constants.Default.Q3.question, Constants.Default.Q3.answers, Constants.Default.Q3.correctAnswer),
+        Question(Constants.Default.Q4.title, Constants.Default.Q4.question, Constants.Default.Q4.answers, Constants.Default.Q4.correctAnswer),
+        Question(Constants.Default.Q5.title, Constants.Default.Q5.question, Constants.Default.Q5.answers, Constants.Default.Q5.correctAnswer)
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
@@ -55,7 +55,7 @@ struct QuizBrain {
         
         //Check the users answers for the Renal Quiz.
         if topic == Constants.renalString {
-            actualAnswer = renalQuiz[questionNumber].correctAnswer
+            actualAnswer = renalQuiz[questionNumber].correctAnswer //Reference the correct answer from the Renal Quiz.
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -65,7 +65,7 @@ struct QuizBrain {
             
         //Check the users answer for the Rhuematology Quiz.
         } else if topic == Constants.rhuematologyString {
-            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer
+            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer //Reference the correct answer from the Rhuematology Quiz.
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -75,7 +75,7 @@ struct QuizBrain {
             
         //Check the users answers for the Cardiovascular Quiz.
         } else if topic == Constants.cardiovascularString {
-            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer
+            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer //Reference the correct answer from the Cardiovascular Quiz.
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -126,15 +126,43 @@ struct QuizBrain {
         return questionText
     }
     
-    ///A function that returns the progress for the progressBar UI. This helps to the user visuallise their progress throughout the quiz.
+    ///A function that returns the progress for the progressBar UI, depending on which quiz the user is doing. This helps to the user visuallise their progress throughout the quiz.
     func getPercentageProgress() -> Float {
-        let result = Float(questionNumber + 1) / Float(quiz.count) //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
+        var result:Float = 0 //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
+        
+        if topic == Constants.renalString {
+            result = Float(questionNumber + 1) / Float(renalQuiz.count)
+            
+        } else if topic == Constants.rhuematologyString {
+            result = Float(questionNumber + 1) / Float(rhuematologyQuiz.count)
+            
+        } else if topic == Constants.cardiovascularString {
+            result = Float(questionNumber + 1) / Float(cardiovascularQuiz.count)
+            
+        } else {
+            result = Float(questionNumber + 1) / Float(quiz.count)
+        }
+        
         return result
     }
     
-    ///A function that returns the current score of the user. The score is incremented from inside the checkAnswer function.
+    ///A function that returns the current score of the user, depending on which quiz the user is doing. The score is incremented from inside the checkAnswer function.
     func getScore() -> String {
-        let scoreString = "Score: \(score) / \(quiz.count)"
+        var scoreString = ""
+        
+        if topic == Constants.renalString {
+            scoreString = "Score: \(score) / \(renalQuiz.count)"
+            
+        } else if topic == Constants.rhuematologyString {
+            scoreString = "Score: \(score) / \(rhuematologyQuiz.count)"
+            
+        } else if topic == Constants.cardiovascularString {
+            scoreString = "Score: \(score) / \(cardiovascularQuiz.count)"
+            
+        } else {
+            scoreString = "Score: \(score) / \(quiz.count)"
+        }
+
         return scoreString
     }
     
@@ -257,7 +285,7 @@ struct QuizBrain {
         return optionString
     }
     
-    ///A function that returns the 6th possible answer of a question... Well, not really an answer, but it allows the user to pass a question if there don't know the answer.
+    ///A function that returns the 6th possible answer of a question... Well, not really an answer, but it allows the user to skip the question if they don't know the answer.
     func getOptionF() -> String {
         let optionString = Constants.lastOptionString
         return optionString
@@ -275,6 +303,7 @@ struct QuizBrain {
             
         } else if topic == Constants.cardiovascularString {
             topicString = Constants.cardiovascularString
+            
         } else {
             topicString = Constants.rhuematologyString //Default quiz is the rhuematologyQuiz
         }
