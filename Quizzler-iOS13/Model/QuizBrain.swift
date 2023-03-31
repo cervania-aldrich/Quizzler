@@ -18,12 +18,21 @@ struct QuizBrain {
         Question(Constants.Renal.Q5.title, Constants.Renal.Q5.question, Constants.Renal.Q5.answers, Constants.Renal.Q5.correctAnswer)
     ]
     
+    let cardiovascularQuiz = [
+        Question(Constants.Cardiovascular.Q1.title, Constants.Cardiovascular.Q1.question, Constants.Cardiovascular.Q1.answers, Constants.Cardiovascular.Q1.correctAnswer),
+        Question(Constants.Cardiovascular.Q2.title, Constants.Cardiovascular.Q2.question, Constants.Cardiovascular.Q2.answers, Constants.Cardiovascular.Q2.correctAnswer),
+        Question(Constants.Cardiovascular.Q3.title, Constants.Cardiovascular.Q3.question, Constants.Cardiovascular.Q3.answers, Constants.Cardiovascular.Q3.correctAnswer),
+        Question(Constants.Cardiovascular.Q4.title, Constants.Cardiovascular.Q4.question, Constants.Cardiovascular.Q4.answers, Constants.Cardiovascular.Q4.correctAnswer),
+        Question(Constants.Cardiovascular.Q5.title, Constants.Cardiovascular.Q5.question, Constants.Cardiovascular.Q5.answers, Constants.Cardiovascular.Q5.correctAnswer),
+        Question(Constants.Cardiovascular.Q6.title, Constants.Cardiovascular.Q6.question, Constants.Cardiovascular.Q6.answers, Constants.Cardiovascular.Q6.correctAnswer),
+    ]
+    
     let quiz = [
         Question(Constants.Rhuematology.Q1.title, Constants.Rhuematology.Q1.question, Constants.Rhuematology.Q1.answers, Constants.Rhuematology.Q1.correctAnswer),
         Question(Constants.Rhuematology.Q2.title, Constants.Rhuematology.Q2.question, Constants.Rhuematology.Q2.answers, Constants.Rhuematology.Q2.correctAnswer),
         Question(Constants.Rhuematology.Q3.title, Constants.Rhuematology.Q3.question, Constants.Rhuematology.Q3.answers, Constants.Rhuematology.Q3.correctAnswer),
         Question(Constants.Rhuematology.Q4.title, Constants.Rhuematology.Q4.question, Constants.Rhuematology.Q4.answers, Constants.Rhuematology.Q4.correctAnswer),
-        Question(Constants.Rhuematology.Q5.title, Constants.Rhuematology.Q5.question, Constants.Rhuematology.Q5.answers, Constants.Rhuematology.Q5.correctAnswer),
+        Question(Constants.Rhuematology.Q5.title, Constants.Rhuematology.Q5.question, Constants.Rhuematology.Q5.answers, Constants.Rhuematology.Q5.correctAnswer)
     ]
     
     var questionNumber = 0 //A reference to track which question the user is currently on.
