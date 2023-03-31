@@ -91,8 +91,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             questionText = renalQuiz[questionNumber].question
+            
         } else if topic == Constants.rhuematologyString {
             questionText = rhuematologyQuiz[questionNumber].question
+            
+        } else if topic == Constants.cardiovascularString {
+            questionText = cardiovascularQuiz[questionNumber].question
+            
         } else {
             questionText = quiz[questionNumber].question
         }
@@ -115,8 +120,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             titleString = renalQuiz[questionNumber].title
+            
         } else if topic == Constants.rhuematologyString {
             titleString = rhuematologyQuiz[questionNumber].title
+            
+        } else if topic == Constants.cardiovascularString {
+            titleString = cardiovascularQuiz[questionNumber].title
+            
         } else {
             titleString = quiz[questionNumber].title
         }
@@ -129,8 +139,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[0]
+            
         } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[0]
+            
+        } else if topic == Constants.cardiovascularString {
+            optionString = cardiovascularQuiz[questionNumber].answers[0]
+            
         } else {
             optionString = quiz[questionNumber].answers[0]
         }
@@ -143,8 +158,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[1]
+            
         } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[1]
+            
+        } else if topic == Constants.cardiovascularString {
+            optionString = cardiovascularQuiz[questionNumber].answers[1]
+            
         } else {
             optionString = quiz[questionNumber].answers[1]
         }
@@ -157,8 +177,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[2]
+            
         } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[2]
+            
+        } else if topic == Constants.cardiovascularString {
+            optionString = cardiovascularQuiz[questionNumber].answers[2]
+            
         } else {
             optionString = quiz[questionNumber].answers[2]
         }
@@ -171,8 +196,13 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[3]
+            
         } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[3]
+            
+        } else if topic == Constants.cardiovascularString {
+            optionString = cardiovascularQuiz[questionNumber].answers[3]
+            
         } else {
             optionString = quiz[questionNumber].answers[3]
         }
@@ -185,8 +215,12 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[4]
+            
         } else if topic == Constants.rhuematologyString {
             optionString = rhuematologyQuiz[questionNumber].answers[4]
+            
+        } else if topic == Constants.cardiovascularString {
+            optionString = cardiovascularQuiz[questionNumber].answers[4]
         } else {
             optionString = quiz[questionNumber].answers[4]
         }
@@ -204,11 +238,16 @@ struct QuizBrain {
         
         if topic == Constants.renalString {
             topicString = Constants.renalString
+            
         } else if topic == Constants.rhuematologyString {
             topicString = Constants.rhuematologyString
+            
+        } else if topic == Constants.cardiovascularString {
+            topicString = Constants.cardiovascularString
         } else {
             topicString = Constants.rhuematologyString //Default quiz is the rhuematologyQuiz
         }
+        
         return topicString
     }
     

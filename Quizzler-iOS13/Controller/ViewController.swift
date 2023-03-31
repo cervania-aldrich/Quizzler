@@ -64,6 +64,16 @@ class ViewController: UIViewController {
             
         }))
         
+        alert.addAction(UIAlertAction(title: Constants.cardiovascularString, style: UIAlertAction.Style.default, handler: { action in
+            sender.setTitle(Constants.cardiovascularString, for: .normal)
+            self.quizBrain.topic = sender.currentTitle ?? ""
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
+            self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz again
+            
+        }))
+        
         // show the alert
         self.present(alert, animated: true, completion: nil)
         
@@ -96,9 +106,9 @@ class ViewController: UIViewController {
             self.optionCButton.backgroundColor = UIColor.clear
             self.optionDButton.backgroundColor = UIColor.clear
             self.optionEButton.backgroundColor = UIColor.clear
-            self.optionFButton.backgroundColor = UIColor.clear
-    
         })
+        
+        optionFButton.backgroundColor = UIColor.clear //Do not show green or red background for the last option
 
     }
     

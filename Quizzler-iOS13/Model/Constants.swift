@@ -3,6 +3,7 @@ struct Constants {
     static let optionButtonFont = "Avenir Next"
     static let renalString = "Renal"
     static let rhuematologyString = "Rhuematology"
+    static let cardiovascularString = "Cardiovascular"
     static let alertTitle = "Select Topic"
     static let alertMessage = "What type of questions do you want to review?"
     static let lastOptionString = "Skip Question..."
