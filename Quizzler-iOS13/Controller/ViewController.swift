@@ -19,11 +19,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Tap topicLabel to display UIAlertController
-        
         setupUIProperties() //Set up UI properties to ensure UI looks good (Meets my requirements)
         
-        updateUI() //Start quiz with the first question
+        //Start quiz with the first question
+        updateUI()
     }
     
     @IBAction func answerButtonPressed(_ sender: UIButton) {
@@ -31,7 +30,7 @@ class ViewController: UIViewController {
         guard let userAnswer = sender.currentTitle else {return}
         
         let isAnswerCorrect = quizBrain.checkAnswer(userAnswer)
-        sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set the background to red. (Ternany Operator)
+        sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set to red. (Ternany Operator)
         
         quizBrain.nextQuestion()
         updateUI()
@@ -41,19 +40,24 @@ class ViewController: UIViewController {
     @IBAction func topicButtonPressed(_ sender: UIButton) {
         
         // create the alert
-        let alert = UIAlertController(title: "Select topic", message: "What questions do you want to review?", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Select topic", message: "What type of questions do you want to review?", preferredStyle: UIAlertController.Style.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Renal", style: UIAlertAction.Style.default, handler: { action in
-            self.topicButton.setTitle("Renal", for: .normal)
+        alert.addAction(UIAlertAction(title: Constants.renalString, style: UIAlertAction.Style.default, handler: { action in
+            sender.setTitle(Constants.renalString, for: .normal)
+            self.quizBrain.topic = sender.currentTitle ?? ""
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
+            
         }))
         
-        alert.addAction(UIAlertAction(title: "Cardiovascular", style: UIAlertAction.Style.default, handler: { action in
-            self.topicButton.setTitle("Cardiovascular", for: .normal)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Respiratory", style: UIAlertAction.Style.default, handler: { action in
-            self.topicButton.setTitle("Respiratory", for: .normal)
+        alert.addAction(UIAlertAction(title: Constants.rhuematologyString, style: UIAlertAction.Style.default, handler: { action in
+            sender.setTitle(Constants.rhuematologyString, for: .normal)
+            self.quizBrain.topic = sender.currentTitle ?? ""
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }))
         
         // show the alert
@@ -63,11 +67,13 @@ class ViewController: UIViewController {
     
     
     func updateUI(){
+        
+        //If Renal, show Renal questions. If Rheumatology, show Rheumatology questions. Otherwise, show Renal Questions.
         questionLabel.text = quizBrain.getQuestionText()
         progressBar.progress = quizBrain.getPercentageProgress()
         scoreLabel.text = quizBrain.getScore()
         titleLabel.text = quizBrain.getTitle()
-        topicButton.setTitle(Constants.Renal.topic, for: .normal)
+        topicButton.setTitle(quizBrain.getTopic(), for: .normal)
         
         //Set the titles of each buttons, so that all 6 multiple choice options are in the UI.
         optionAButton.setTitle(quizBrain.getOptionA(), for: .normal)
@@ -111,50 +117,49 @@ class ViewController: UIViewController {
         optionFButton.layer.cornerRadius = 0.3 * optionFButton.bounds.size.height
         
         //Set option A Button properties
-        optionAButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionAButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         optionAButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionAButton.titleLabel?.numberOfLines = 3
         optionAButton.titleLabel?.minimumScaleFactor = 0.1
         optionAButton.clipsToBounds = true
         
         //Set option B Button properties
-        optionBButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionBButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         optionBButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionBButton.titleLabel?.numberOfLines = 3
         optionBButton.titleLabel?.minimumScaleFactor = 0.1
         optionBButton.clipsToBounds = true
         
         //Set option C Button properties
-        optionCButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionCButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         optionCButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionCButton.titleLabel?.numberOfLines = 3
         optionCButton.titleLabel?.minimumScaleFactor = 0.1
         optionCButton.clipsToBounds = true
         
         //Set option D Button properties
-        optionDButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionDButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         optionDButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionDButton.titleLabel?.numberOfLines = 3
         optionDButton.titleLabel?.minimumScaleFactor = 0.1
         optionDButton.clipsToBounds = true
         
         //Set option E Button properties
-        optionEButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionEButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         optionEButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionEButton.titleLabel?.numberOfLines = 3
         optionEButton.titleLabel?.minimumScaleFactor = 0.1
         optionEButton.clipsToBounds = true
         
         //Set option F Button properties
-        optionFButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        optionFButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         
         //Set topic button properties
-        topicButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 17)
+        topicButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
         topicButton.titleLabel?.adjustsFontSizeToFitWidth = true
         topicButton.titleLabel?.numberOfLines = 2
         topicButton.titleLabel?.minimumScaleFactor = 0.05
         topicButton.clipsToBounds = true
-        
         
     }
     
