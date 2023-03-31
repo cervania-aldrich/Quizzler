@@ -5,6 +5,7 @@ struct Constants {
     static let rhuematologyString = "Rhuematology"
     static let alertTitle = "Select Topic"
     static let alertMessage = "What type of questions do you want to review?"
+    static let lastOptionString = "Skip Question..."
     
     struct Renal {
         

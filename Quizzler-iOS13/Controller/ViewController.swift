@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         
         print(userAnswer)
         print(isAnswerCorrect)
+        
         quizBrain.nextQuestion()
         updateUI()
         

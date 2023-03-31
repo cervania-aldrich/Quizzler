@@ -35,15 +35,33 @@ struct QuizBrain {
     }
     
     mutating func checkAnswer(_ userAnswer:String) -> Bool {
-        let actualAnswer = quiz[questionNumber].correctAnswer
+        var actualAnswer = ""
         
-        if userAnswer == actualAnswer {
-            //User got it right - Change background to green
-            score += 1
-            return true
+        if topic == "Renal" {
+            actualAnswer = renalQuiz[questionNumber].correctAnswer
+            if userAnswer == actualAnswer {
+                score += 1 //User got it right - Change background to green
+                return true
+            } else {
+                return false //User got it wrong - Change background to red
+            }
+            
+        } else if topic == "Rhuematology" {
+            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer
+            if userAnswer == actualAnswer {
+                score += 1 //User got it right - Change background to green
+                return true
+            } else {
+                return false //User got it wrong - Change background to red
+            }
         } else {
-            //User got it wrong - Change background to red
-            return false
+            actualAnswer = quiz[questionNumber].correctAnswer
+            if userAnswer == actualAnswer {
+                score += 1 //User got it right - Change background to green
+                return true
+            } else {
+                return false //User got it wrong - Change background to red
+            }
         }
     }
     
@@ -60,7 +78,7 @@ struct QuizBrain {
     }
     
     func getQuestionText() -> String {
-        var questionText = quiz[questionNumber].question
+        var questionText = ""
         
         if topic == Constants.renalString {
             questionText = renalQuiz[questionNumber].question
@@ -84,7 +102,7 @@ struct QuizBrain {
     }
     
     func getTitle() -> String{
-        var titleString = quiz[questionNumber].title
+        var titleString = ""
         
         if topic == Constants.renalString {
             titleString = renalQuiz[questionNumber].title
@@ -98,7 +116,7 @@ struct QuizBrain {
     }
     
     func getOptionA() -> String {
-        var optionString = quiz[questionNumber].answers[0]
+        var optionString = ""
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[0]
@@ -112,7 +130,7 @@ struct QuizBrain {
     }
     
     func getOptionB() -> String {
-        var optionString = quiz[questionNumber].answers[1]
+        var optionString = ""
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[1]
@@ -126,7 +144,7 @@ struct QuizBrain {
     }
     
     func getOptionC() -> String {
-        var optionString = quiz[questionNumber].answers[2]
+        var optionString = ""
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[2]
@@ -140,7 +158,7 @@ struct QuizBrain {
     }
     
     func getOptionD() -> String {
-        var optionString = quiz[questionNumber].answers[3]
+        var optionString = ""
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[3]
@@ -154,7 +172,7 @@ struct QuizBrain {
     }
     
     func getOptionE() -> String {
-        var optionString = quiz[questionNumber].answers[4]
+        var optionString = ""
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[4]
@@ -168,7 +186,7 @@ struct QuizBrain {
     }
     
     func getOptionF() -> String {
-        let optionString = "Pass"
+        let optionString = Constants.lastOptionString
         return optionString
     }
     
