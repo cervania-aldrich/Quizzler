@@ -48,18 +48,18 @@ struct QuizBrain {
     }
     
     mutating func nextQuestion() {
-        
+
         //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
-        
+
         if questionNumber + 1 < quiz.count {
             questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
         } else {
-            questionNumber = 0 //Reset the questionNumber, therefore starting back at the first question of the quiz.
-            score = 0
+            resetQuestionNumberAndScore()
+            print("Quiz done! Final Score: \(score)/\(quiz.count) .  Try again?")
         }
     }
     
-    mutating func getQuestionText() -> String {
+    func getQuestionText() -> String {
         var questionText = quiz[questionNumber].question
         
         if topic == "Renal" {

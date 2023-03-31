@@ -49,6 +49,8 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.updateUI()
             }
+            self.quizBrain.questionNumber = 0
+            self.quizBrain.score = 0
             
         }))
         
@@ -58,6 +60,8 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.updateUI()
             }
+            self.quizBrain.questionNumber = 0
+            self.quizBrain.score = 0
         }))
         
         // show the alert
@@ -86,7 +90,7 @@ class ViewController: UIViewController {
         //Replace timer() with UIView.animate(). Pros: No need for @objc, and smoother animation.
         //Note that UIView.animate() disables button interactions temporarily, a good option for quiz apps but not for the Xylophone app.
 
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.optionAButton.backgroundColor = UIColor.clear
             self.optionBButton.backgroundColor = UIColor.clear
             self.optionCButton.backgroundColor = UIColor.clear
