@@ -1,5 +1,7 @@
+///A struct to show all of the strings used in the app. Mainly, this is why all the quiz strings are stored. This is done for clarity, and reduces the risks of bugs from typos, also it makes the quizBrian more readable and everything looks more organised.
 struct Constants {
     
+    ///Commonly used strings across the development of the app.
     static let optionButtonFont = "Avenir Next"
     static let renalString = "Renal"
     static let rhuematologyString = "Rhuematology"
@@ -8,7 +10,10 @@ struct Constants {
     static let alertMessage = "What type of questions do you want to review?"
     static let lastOptionString = "Skip Question..."
     
+    ///A struct to show containing the Renal questions and answer strings.
     struct Renal {
+        
+        //Q1 denotes the structure of the first Renal question. Q2 denotes the 2nd Renal question, and so forth. Each are analogous to the Questions Struct.
         
         struct Q1 {
             static let title = "Nocturia"
@@ -72,8 +77,10 @@ struct Constants {
         }
     }
     
-    //Rhuematology Questions and Answers
+    ///A struct to show containing the Rhuematology questions and answer strings.
     struct Rhuematology {
+        
+        //Q1 denotes the structure of the first Rhuematology question. Q2 denotes the 2nd Rhuematology question, and so forth.
         
         struct Q1 {
             static let title = "Stiff hands (1)"
@@ -133,8 +140,11 @@ struct Constants {
         }
     }
     
-    //Cardiovascular Questions and Answers
+    ///A struct to show containing the Cardiovascular questions and answer strings.
     struct Cardiovascular {
+        
+        //Q1 denotes the structure of the first Cardiovascular question. Q2 denotes the 2nd Cardiovascular question, and so forth.
+        
         struct Q1 {
             static let title = "Myocardial infarction"
             static let question = "A 65-year-old man presents with central crushing chest pain for the first time. He is transferred immediately to the closest cardiac unit to undergo a primary percutaneous coronary intervention. There is thrombosis of the left circumflex artery only. Angioplasty is carried out and a drug-eluding stent is inserted. What are the most likely changes to have occurred on ECG during admission?"

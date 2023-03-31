@@ -14,8 +14,8 @@
             filePath = "Quizzler-iOS13/Controller/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "updateUI()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,10 @@
             filePath = "Quizzler-iOS13/Controller/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "setupUIProperties()"
-            landmarkType = "7">
+            startingLineNumber = "183"
+            endingLineNumber = "183"
+            landmarkName = "ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -46,8 +46,8 @@
             filePath = "Quizzler-iOS13/Controller/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "setupUIProperties()"
             landmarkType = "7">
          </BreakpointContent>
