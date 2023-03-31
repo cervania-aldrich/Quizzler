@@ -32,9 +32,6 @@ class ViewController: UIViewController {
         let isAnswerCorrect = quizBrain.checkAnswer(userAnswer)
         sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set to red. (Ternany Operator)
         
-        print(userAnswer)
-        print(isAnswerCorrect)
-        
         quizBrain.nextQuestion()
         updateUI()
         
