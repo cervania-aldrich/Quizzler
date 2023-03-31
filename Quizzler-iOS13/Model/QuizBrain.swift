@@ -1,7 +1,7 @@
-///In accordance to the MVC pattern, this structure handles the logic and data of the app.
+///In accordance to the MVC pattern, this structure handles the logic and data of the app, as well as the other files in the Model folder.
 struct QuizBrain {
     
-   var topic = "" //This property is set when a user selects a topic from the topicButton, thus showing their desired quiz topic.
+   var topic = "" //This property is set when a user selects a topic from the topicButton in the ViewController, thus showing quiz questions based on a topic of their choice.
     
     ///A constant to reference an array of Rhuematology questions. The strings arguments are referenced from the Constants struct.
     let rhuematologyQuiz = [
@@ -51,21 +51,25 @@ struct QuizBrain {
     
     ///A function to check the users answer against the actual answer, depending on which quiz there are using.
     mutating func checkAnswer(_ userAnswer:String) -> Bool {
-        var actualAnswer = ""
+        var actualAnswer = "" //This value will be determined based on the topic of the quiz.
         
         //Check the users answers for the Renal Quiz.
         if topic == Constants.renalString {
+            
             actualAnswer = renalQuiz[questionNumber].correctAnswer //Reference the correct answer from the Renal Quiz.
+            
             if userAnswer == actualAnswer {
-                score += 1 //User got it right - Change background to green
-                return true
+                score += 1 //Incrementing score indicates that the user has got the question correct.
+                return true //User got it right - Change background to green
             } else {
                 return false //User got it wrong - Change background to red
             }
             
         //Check the users answer for the Rhuematology Quiz.
         } else if topic == Constants.rhuematologyString {
+            
             actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer //Reference the correct answer from the Rhuematology Quiz.
+            
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -75,7 +79,9 @@ struct QuizBrain {
             
         //Check the users answers for the Cardiovascular Quiz.
         } else if topic == Constants.cardiovascularString {
-            actualAnswer = rhuematologyQuiz[questionNumber].correctAnswer //Reference the correct answer from the Cardiovascular Quiz.
+            
+            actualAnswer = cardiovascularQuiz[questionNumber].correctAnswer //Reference the correct answer from the Cardiovascular Quiz.
+            
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -83,7 +89,9 @@ struct QuizBrain {
                 return false //User got it wrong - Change background to red
             }
         } else { //Check the users answers against the default quiz (which is defined as the Rhuematology Quiz).
+            
             actualAnswer = quiz[questionNumber].correctAnswer
+            
             if userAnswer == actualAnswer {
                 score += 1 //User got it right - Change background to green
                 return true
@@ -96,31 +104,34 @@ struct QuizBrain {
     ///A function to move the user to the next question of the quiz.
     mutating func nextQuestion() {
 
-        //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1. Take into account of this offset.
-
+        //Validate the quiz by only showing the questions in the quiz. Array indexes start at 0, not at 1, so take this offset into account.
+        
+        //If the user HAS NOT reached the end of the quiz, go to the next question (IF clause). Otherwise, when the user HAS reached the end of the quiz, go back to the first question (ELSE clause).
+        
         if questionNumber + 1 < quiz.count {
             questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+            
         } else {
             resetQuestionNumberAndScore()
-            //print("Quiz done! Final Score: \(score)/\(quiz.count) .  Try again?")
+
         }
     }
     
     ///A function to get the question text from each question object from one of the quiz properties defined at the start of the struct.
     func getQuestionText() -> String {
-        var questionText = ""
+        var questionText = "" //The actual question will depend on which quiz the user is doing. Update this value depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
-            questionText = renalQuiz[questionNumber].question
+            questionText = renalQuiz[questionNumber].question //If the user is doing the "Renal" quiz, assign the questionText to the "Renal" questions.
             
         } else if topic == Constants.rhuematologyString {
-            questionText = rhuematologyQuiz[questionNumber].question
+            questionText = rhuematologyQuiz[questionNumber].question //If the user is doing the "Rhuematology" quiz, assign the questionText to the "Rhuematology" questions.
             
         } else if topic == Constants.cardiovascularString {
-            questionText = cardiovascularQuiz[questionNumber].question
+            questionText = cardiovascularQuiz[questionNumber].question //If the user is doing the "Cardiovascular" quiz, assign the questionText to the "Cardiovascular" questions.
             
         } else {
-            questionText = quiz[questionNumber].question
+            questionText = quiz[questionNumber].question //Otherwise, assign the questionText to the Default questions.
         }
         
         return questionText
@@ -128,19 +139,19 @@ struct QuizBrain {
     
     ///A function that returns the progress for the progressBar UI, depending on which quiz the user is doing. This helps to the user visuallise their progress throughout the quiz.
     func getPercentageProgress() -> Float {
-        var result:Float = 0 //The ratio of the 'questionNumber' to 'quiz.count,' expressed as a percentage.
+        var result:Float = 0 //A reference to the ratio of the 'questionNumber' to 'quiz.count.' Its value depends on the total number of questions in a given quiz.
         
         if topic == Constants.renalString {
-            result = Float(questionNumber + 1) / Float(renalQuiz.count)
+            result = Float(questionNumber + 1) / Float(renalQuiz.count) //Calculate the progress based on the total number of "Renal" questions.
             
         } else if topic == Constants.rhuematologyString {
-            result = Float(questionNumber + 1) / Float(rhuematologyQuiz.count)
+            result = Float(questionNumber + 1) / Float(rhuematologyQuiz.count) //Calculate the progress based on the total number of "Rhuematology" questions.
             
         } else if topic == Constants.cardiovascularString {
-            result = Float(questionNumber + 1) / Float(cardiovascularQuiz.count)
+            result = Float(questionNumber + 1) / Float(cardiovascularQuiz.count) //Calculate the progress based on the total number of "Cardiovascular" questions.
             
         } else {
-            result = Float(questionNumber + 1) / Float(quiz.count)
+            result = Float(questionNumber + 1) / Float(quiz.count) //Calculate the progress based on the total number of "Default" questions.
         }
         
         return result
@@ -148,19 +159,19 @@ struct QuizBrain {
     
     ///A function that returns the current score of the user, depending on which quiz the user is doing. The score is incremented from inside the checkAnswer function.
     func getScore() -> String {
-        var scoreString = ""
+        var scoreString = "" //The value of the score will depend on the which quiz the user is doing. Update this value depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
-            scoreString = "Score: \(score) / \(renalQuiz.count)"
+            scoreString = "Score: \(score) / \(renalQuiz.count)" //Calculate the score based on the total number of "Renal" questions.
             
         } else if topic == Constants.rhuematologyString {
-            scoreString = "Score: \(score) / \(rhuematologyQuiz.count)"
+            scoreString = "Score: \(score) / \(rhuematologyQuiz.count)" //Calculate the score based on the total number of "Rhuematology" questions.
             
         } else if topic == Constants.cardiovascularString {
-            scoreString = "Score: \(score) / \(cardiovascularQuiz.count)"
+            scoreString = "Score: \(score) / \(cardiovascularQuiz.count)" //Calculate the score based on the total number of "Cardiovascular" questions.
             
         } else {
-            scoreString = "Score: \(score) / \(quiz.count)"
+            scoreString = "Score: \(score) / \(quiz.count)" //Calculate the score based on the total number of "Default" questions.
         }
 
         return scoreString
@@ -168,19 +179,19 @@ struct QuizBrain {
     
     ///A function that returns the title of each question. The title of each question defines what type of problem the question is asking.
     func getTitle() -> String{
-        var titleString = ""
+        var titleString = "" //A reference to the title of each question. Titles change depending on the question, hence its value will change depending on the question.
         
         if topic == Constants.renalString {
-            titleString = renalQuiz[questionNumber].title
+            titleString = renalQuiz[questionNumber].title //Assign the title to one of the "Renal" titles
             
         } else if topic == Constants.rhuematologyString {
-            titleString = rhuematologyQuiz[questionNumber].title
+            titleString = rhuematologyQuiz[questionNumber].title //Assign the title to one of the "Rhuematology" titles
             
         } else if topic == Constants.cardiovascularString {
-            titleString = cardiovascularQuiz[questionNumber].title
+            titleString = cardiovascularQuiz[questionNumber].title //Assign the title to one of the "Cardiovascular" titles
             
         } else {
-            titleString = quiz[questionNumber].title
+            titleString = quiz[questionNumber].title //Assign the title to one of the "Default" titles
         }
         
         return titleString
@@ -188,19 +199,19 @@ struct QuizBrain {
     
     ///A function that returns the 1st possible answer of a question.
     func getOptionA() -> String {
-        var optionString = ""
+        var optionString = "" //A reference to the 1st possible answer of a given quiz question. This will change depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
-            optionString = renalQuiz[questionNumber].answers[0]
+            optionString = renalQuiz[questionNumber].answers[0] //Assign optionString to the 1st possible answer for a particular "Renal" Quiz quiestion.
             
         } else if topic == Constants.rhuematologyString {
-            optionString = rhuematologyQuiz[questionNumber].answers[0]
+            optionString = rhuematologyQuiz[questionNumber].answers[0] //Assign optionString to the 1st possible answer for a particular Rhuematology" Quiz quiestion.
             
         } else if topic == Constants.cardiovascularString {
-            optionString = cardiovascularQuiz[questionNumber].answers[0]
+            optionString = cardiovascularQuiz[questionNumber].answers[0] //Assign optionString to the 1st possible answer for a particular "Cardiovascular" Quiz quiestion.
             
         } else {
-            optionString = quiz[questionNumber].answers[0]
+            optionString = quiz[questionNumber].answers[0] //Assign optionString to the 1st possible answer for a particular "Default" Quiz quiestion.
         }
         
         return optionString
@@ -208,19 +219,19 @@ struct QuizBrain {
     
     ///A function that returns the 2nd possible answer of a question.
     func getOptionB() -> String {
-        var optionString = ""
+        var optionString = "" //A reference to the 2nd possible answer of a given quiz question. This will change depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
-            optionString = renalQuiz[questionNumber].answers[1]
+            optionString = renalQuiz[questionNumber].answers[1] //Assign optionString to the 2nd possible answer for a particular "Renal" Quiz quiestion.
             
         } else if topic == Constants.rhuematologyString {
-            optionString = rhuematologyQuiz[questionNumber].answers[1]
+            optionString = rhuematologyQuiz[questionNumber].answers[1] //Assign optionString to the 2nd possible answer for a particular Rhuematology" Quiz quiestion.
             
         } else if topic == Constants.cardiovascularString {
-            optionString = cardiovascularQuiz[questionNumber].answers[1]
+            optionString = cardiovascularQuiz[questionNumber].answers[1] //Assign optionString to the 2nd possible answer for a particular "Cardiovascular" Quiz quiestion.
             
         } else {
-            optionString = quiz[questionNumber].answers[1]
+            optionString = quiz[questionNumber].answers[1] //Assign optionString to the 2nd possible answer for a particular "Default" Quiz quiestion.
         }
         
         return optionString
@@ -228,7 +239,7 @@ struct QuizBrain {
     
     ///A function that returns the 3rd possible answer of a question.
     func getOptionC() -> String {
-        var optionString = ""
+        var optionString = "" //A reference to the 3rd possible answer of a given quiz question. This will change depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[2]
@@ -248,7 +259,7 @@ struct QuizBrain {
     
     ///A function that returns the 4th possible answer of a question.
     func getOptionD() -> String {
-        var optionString = ""
+        var optionString = "" //A reference to the 4th possible answer of a given quiz question. This will change depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[3]
@@ -268,7 +279,7 @@ struct QuizBrain {
     
     ///A function that returns the 5th possible answer of a question.
     func getOptionE() -> String {
-        var optionString = ""
+        var optionString = "" //A reference to the 5th possible answer of a given quiz question. This will change depending on which quiz the user is doing.
         
         if topic == Constants.renalString {
             optionString = renalQuiz[questionNumber].answers[4]
@@ -287,13 +298,13 @@ struct QuizBrain {
     
     ///A function that returns the 6th possible answer of a question... Well, not really an answer, but it allows the user to skip the question if they don't know the answer.
     func getOptionF() -> String {
-        let optionString = Constants.lastOptionString
+        let optionString = Constants.lastOptionString //A reference for users to skip a question.
         return optionString
     }
     
     ///A function the returns the topic that a question is from. So either Renal, Rhuematology or Cardiovascular.
     func getTopic() -> String {
-        var topicString = ""
+        var topicString = "" //A reference to topic of each question
         
         if topic == Constants.renalString {
             topicString = Constants.renalString

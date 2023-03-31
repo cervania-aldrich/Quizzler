@@ -32,8 +32,8 @@ class ViewController: UIViewController {
         let isAnswerCorrect = quizBrain.checkAnswer(userAnswer)
         sender.backgroundColor = isAnswerCorrect ? UIColor.green : UIColor.red //If isAnswerCorrect is true, set background color to green, otherwise set to red. (Ternany Operator)
         
-        quizBrain.nextQuestion()
-        updateUI()
+        quizBrain.nextQuestion() //Perform the logic behind going to the next question of the quiz.
+        updateUI() //Show the next question in the UI,
         
     }
     
@@ -47,9 +47,11 @@ class ViewController: UIViewController {
             
             sender.setTitle(Constants.renalString, for: .normal) //Change to the topic button text to reflect on choosing the "Renal" quiz.
             self.quizBrain.topic = sender.currentTitle ?? "" //Inform the quizBrain that topic has changed to "Renal"
+            
             DispatchQueue.main.async {
-                self.updateUI() //Update the UI with the "Renal" Quiz.
+                self.updateUI() //Update the UI with the "Renal" Quiz. Perform this task on the main thread.
             }
+            
             self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz, and reset the score.
         
         }))
@@ -59,9 +61,11 @@ class ViewController: UIViewController {
             
             sender.setTitle(Constants.rhuematologyString, for: .normal) //Change to the topic button text to reflect on choosing the "Rhuematology" quiz.
             self.quizBrain.topic = sender.currentTitle ?? "" //Inform the quizBrain that topic has changed to "Rhuematology"
+            
             DispatchQueue.main.async {
-                self.updateUI() //Update the UI with the "Rhuematology" Quiz.
+                self.updateUI() //Update the UI with the "Rhuematology" Quiz. Perform this task on the main thread.
             }
+            
             self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz, and reset the score.
             
         }))
@@ -71,9 +75,11 @@ class ViewController: UIViewController {
             
             sender.setTitle(Constants.cardiovascularString, for: .normal) //Change to the topic button text to reflect on choosing the "Cardiovascular" quiz.
             self.quizBrain.topic = sender.currentTitle ?? "" //Inform the quizBrain that topic has changed to "Cardiovascular"
+            
             DispatchQueue.main.async {
-                self.updateUI() //Update the UI with the ""Cardiovascular" Quiz.
+                self.updateUI() //Update the UI with the ""Cardiovascular" Quiz. Perform this task on the main thread.
             }
+            
             self.quizBrain.resetQuestionNumberAndScore() //Start at the first question of the quiz, and reset the score.
             
         }))
@@ -136,11 +142,11 @@ class ViewController: UIViewController {
         optionFButton.layer.cornerRadius = 0.3 * optionFButton.bounds.size.height
         
         //Set option A Button properties
-        optionAButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
-        optionAButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        optionAButton.titleLabel?.numberOfLines = 3
-        optionAButton.titleLabel?.minimumScaleFactor = 0.1
-        optionAButton.clipsToBounds = true
+        optionAButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17) //Set font programmatically
+        optionAButton.titleLabel?.adjustsFontSizeToFitWidth = true //Let the font size reduce if the word is too big
+        optionAButton.titleLabel?.numberOfLines = 3 //Let the there 3 lines the text could occupy
+        optionAButton.titleLabel?.minimumScaleFactor = 0.1 //Specifying the smallest possible multiplier for the font size.
+        optionAButton.clipsToBounds = true //Allow the button to be clipped to the bounds of the button.
         
         //Set option B Button properties
         optionBButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
