@@ -28,7 +28,7 @@ struct QuizBrain {
         Question(Constants.Cardiovascular.Q3.title, Constants.Cardiovascular.Q3.question, Constants.Cardiovascular.Q3.answers, Constants.Cardiovascular.Q3.correctAnswer),
         Question(Constants.Cardiovascular.Q4.title, Constants.Cardiovascular.Q4.question, Constants.Cardiovascular.Q4.answers, Constants.Cardiovascular.Q4.correctAnswer),
         Question(Constants.Cardiovascular.Q5.title, Constants.Cardiovascular.Q5.question, Constants.Cardiovascular.Q5.answers, Constants.Cardiovascular.Q5.correctAnswer),
-        Question(Constants.Cardiovascular.Q6.title, Constants.Cardiovascular.Q6.question, Constants.Cardiovascular.Q6.answers, Constants.Cardiovascular.Q6.correctAnswer),
+        Question(Constants.Cardiovascular.Q6.title, Constants.Cardiovascular.Q6.question, Constants.Cardiovascular.Q6.answers, Constants.Cardiovascular.Q6.correctAnswer)
     ]
     
     ///A constant to reference an array of the default quiz. The default quiz is set to be the same as the Rhuematology quiz. This is the first quiz that the users see.
@@ -108,13 +108,42 @@ struct QuizBrain {
         
         //If the user HAS NOT reached the end of the quiz, go to the next question (IF clause). Otherwise, when the user HAS reached the end of the quiz, go back to the first question (ELSE clause).
         
-        if questionNumber + 1 < quiz.count {
-            questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+        if topic == Constants.renalString {
+            
+            if questionNumber + 1 < renalQuiz.count {
+                questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+                
+            } else {
+                resetQuestionNumberAndScore()
+            }
+            
+        } else if topic == Constants.rhuematologyString {
+            
+            if questionNumber + 1 < rhuematologyQuiz.count {
+                questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+                
+            } else {
+                resetQuestionNumberAndScore()
+            }
+            
+        } else if topic == Constants.cardiovascularString {
+            
+            if questionNumber + 1 < cardiovascularQuiz.count {
+                questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+                
+            } else {
+                resetQuestionNumberAndScore()
+            }
             
         } else {
-            resetQuestionNumberAndScore()
-
+            if questionNumber + 1 < quiz.count {
+                questionNumber += 1 //Increment the questionNumber, therefore going to the next question of the quiz.
+                
+            } else {
+                resetQuestionNumberAndScore()
+            }
         }
+        
     }
     
     ///A function to get the question text from each question object from one of the quiz properties defined at the start of the struct.
@@ -304,7 +333,7 @@ struct QuizBrain {
     
     ///A function the returns the topic that a question is from. So either Renal, Rhuematology or Cardiovascular.
     func getTopic() -> String {
-        var topicString = "" //A reference to topic of each question
+        var topicString = "" //A reference to the topic of each question
         
         if topic == Constants.renalString {
             topicString = Constants.renalString

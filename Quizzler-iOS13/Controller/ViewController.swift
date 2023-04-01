@@ -119,7 +119,7 @@ class ViewController: UIViewController {
         })
         
         optionFButton.backgroundColor = UIColor.clear //Do not show green or red background for the last option
-
+    
     }
     
     ///A function that defines properties required for setting up the UI. This function is called in viewDidLoad().
@@ -142,50 +142,54 @@ class ViewController: UIViewController {
         optionFButton.layer.cornerRadius = 0.3 * optionFButton.bounds.size.height
         
         //Set option A Button properties
-        optionAButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17) //Set font programmatically
+        optionAButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 18) //Set font programmatically
         optionAButton.titleLabel?.adjustsFontSizeToFitWidth = true //Let the font size reduce if the word is too big
         optionAButton.titleLabel?.numberOfLines = 3 //Let the there 3 lines the text could occupy
         optionAButton.titleLabel?.minimumScaleFactor = 0.1 //Specifying the smallest possible multiplier for the font size.
         optionAButton.clipsToBounds = true //Allow the button to be clipped to the bounds of the button.
         
         //Set option B Button properties
-        optionBButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        optionBButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         optionBButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionBButton.titleLabel?.numberOfLines = 3
         optionBButton.titleLabel?.minimumScaleFactor = 0.1
         optionBButton.clipsToBounds = true
         
         //Set option C Button properties
-        optionCButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        optionCButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         optionCButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionCButton.titleLabel?.numberOfLines = 3
         optionCButton.titleLabel?.minimumScaleFactor = 0.1
         optionCButton.clipsToBounds = true
         
         //Set option D Button properties
-        optionDButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        optionDButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         optionDButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionDButton.titleLabel?.numberOfLines = 3
         optionDButton.titleLabel?.minimumScaleFactor = 0.1
         optionDButton.clipsToBounds = true
         
         //Set option E Button properties
-        optionEButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        optionEButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         optionEButton.titleLabel?.adjustsFontSizeToFitWidth = true
         optionEButton.titleLabel?.numberOfLines = 3
         optionEButton.titleLabel?.minimumScaleFactor = 0.1
         optionEButton.clipsToBounds = true
         
         //Set option F Button properties
-        optionFButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        optionFButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         
         //Set topic button properties
-        topicButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 17)
+        topicButton.titleLabel?.font = UIFont(name: Constants.optionButtonFont, size: 16)
         topicButton.titleLabel?.adjustsFontSizeToFitWidth = true
         topicButton.titleLabel?.numberOfLines = 2
-        topicButton.titleLabel?.minimumScaleFactor = 0.05
+        topicButton.titleLabel?.minimumScaleFactor = 0.1
         topicButton.clipsToBounds = true
         
+        //Set questionLabel properties
+        //questionLabel.adjustsFontSizeToFitWidth = true
+        questionLabel.minimumScaleFactor = 0.3
+        questionLabel.numberOfLines = 14
     }
     
 }

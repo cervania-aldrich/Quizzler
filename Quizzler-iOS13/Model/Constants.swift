@@ -201,7 +201,7 @@ struct Constants {
         }
         struct Q6 {
             static let title = "Shortness of breath"
-            static let question = "A 66-vear-old woman presents to accident and emergency with a 2-day history of shortness of breath. The patient notes becoming progressively short of breath as well as a sharp pain in the right side of the chest which is most painful when taking a deep breath. The patient also complains of mild pain in the right leg, though there is nothing significant on full cardiovascular and respiratory examination. Heart rate is 96 and respiratory rate is 12. The patient denies any weight loss or long haul flights but mentions undergoing a nasal polypectomy 3 weeks ago. The most likely diagnosis is:"
+            static let question = "A 66-year-old woman presents to accident and emergency with a 2-day history of shortness of breath. The patient notes becoming progressively short of breath as well as a sharp pain in the right side of the chest which is most painful when taking a deep breath. The patient also complains of mild pain in the right leg, though there is nothing significant on full cardiovascular and respiratory examination. Heart rate is 96 and respiratory rate is 12. The patient denies any weight loss or long haul flights but mentions undergoing a nasal polypectomy 3 weeks ago. The most likely diagnosis is:"
             static let answers = ["Muscular strain",
                                   "Heart failure",
                                   "Pneumothorax",
